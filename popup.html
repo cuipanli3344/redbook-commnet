@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .settings {
+      border: 1px solid #eee;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .row {
+      margin: 10px 0;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    button {
+      padding: 8px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button#stopCollect {
+      background-color: #f44336;
+    }
+    button#stopCollect:hover {
+      background-color: #da190b;
+    }
+    .status {
+      color: #666;
+      font-size: 14px;
+      padding: 8px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+    select, input {
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .export-section {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    h3 {
+      margin: 0;
+      color: #2196F3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>小红书数据采集助手</h3>
+    
+    <div class="settings">
+      <div class="row">
+        <label>采集选项：</label>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" id="collectContent" checked> 笔记内容
+          </label>
+          <label>
+            <input type="checkbox" id="collectComments" checked> 评论数据
+          </label>
+          <label>
+            <input type="checkbox" id="collectAuthor" checked> 作者信息
+          </label>
+          <label>
+            <input type="checkbox" id="collectImages" checked> 图片链接
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label>采集模式：</label>
+        <select id="collectMode">
+          <option value="single">当前笔记</option>
+          <option value="author">作者所有笔记</option>
+          <option value="search">搜索结果页</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label>采集间隔(秒)：</label>
+        <input type="number" id="interval" value="3" min="2">
+      </div>
+    </div>
+
+    <div>
+      <button id="startCollect">开始采集</button>
+      <button id="stopCollect">停止采集</button>
+    </div>
+
+    <div class="status" id="status">
+      未开始采集
+    </div>
+
+    <div class="export-section">
+      <button id="exportData">导出数据</button>
+      <select id="exportFormat">
+        <option value="csv">Excel格式(CSV)</option>
+        <option value="json">JSON格式</option>
+      </select>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

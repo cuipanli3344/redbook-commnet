@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "小红书数据采集助手",
+  "version": "1.0",
+  "description": "自动采集小红书笔记内容、评论等数据",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://*.xiaohongshu.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.xiaohongshu.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["utils.js"],
+    "matches": ["https://*.xiaohongshu.com/*"]
+  }],
+  "background": {
+    "service_worker": "background.js"
+  }
+} 
